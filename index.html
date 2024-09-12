@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hamburgueseria Blound</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -22,26 +23,63 @@
         <section id="inicio">
             <h2>Bienvenidos a Blound</h2>
             <p>Disfruta de las mejores hamburguesas de la ciudad, hechas con ingredientes frescos y de la mejor calidad.</p>
-            <img src="img/smash.png">
+            <img src="img/smash.png" alt="Imagen de hamburguesa">
         </section>
 
         <section id="nosotros">
             <h2>Sobre Nosotros</h2>
-            <p>Somos una hamburguesería local comprometida con ofrecer productos de excelente calidad y un servicio amigable.</p>
+            <p>En 1988 un par de jóvenes empresarios argentinos decidieron incursionar en un mercado,en Argentina: <br>
+                el mercado de las hamburguesas. <br>
+                En ese momento existían cadenas nacionales que ofrecían hamburguesas dentro de su menú, <br> 
+                pero no se había desarrollado el hábito de consumo de hamburguesa en el público argentino, <br>
+                ni habían llegado al país las grandes cadenas internacionales. <br>
+                Estos jóvenes empresarios no conocían el negocio pero les gustaban las hamburguesas, <br>
+                tenían muchas ganas y convicción en sacar adelante su proyecto. <br>
+                Es así que el 11 de Junio de 1988 nació Blound en un local alquilado del corazón de Mar del Plata. <br>
+                Comenzaron a trabajar en su objetivo de preparar la mejor hamburguesa de Argentina. <br></p>
         </section>
 
         <section id="menu">
             <h2>Nuestro Menú</h2>
-            <ul>
-                <li>Hamburguesa Clásica</li>
-                <li>Hamburguesa de Queso</li>
-                <li>Hamburguesa Vegana</li>
-            </ul>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hamburguesa Clásica</td>
+                        <td>$ 8500</td>
+                    </tr>
+                    <tr>
+                        <td>Hamburguesa de Queso</td>
+                        <td>$ 10000</td>
+                    </tr>
+                    <tr>
+                        <td>Hamburguesa Vegana</td>
+                        <td>$ 12000</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section id="contacto">
             <h2>Contacto</h2>
             <p>Puedes encontrarnos en la Calle Colon 1239, o llámanos al +54 223568954.</p>
+            <form action="#" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="mensaje">Mensaje:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+
+                <input type="submit" value="Enviar">
+            </form>
         </section>
     </main>
 
