@@ -57,16 +57,24 @@ nav ul li a {
 }
 
 /* Sección sobre nosotros */
-#nosotros {
-    padding: 2rem;
+#nosotros h2{
     text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+#nosotros {
+    padding: 2rem 0;
     background-color: #eaeaea;
 }
 
 #nosotros .row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+}
+
+#nosotros .col-md-6 {
+    padding: 1rem;
 }
 
 #nosotros img {
@@ -75,12 +83,36 @@ nav ul li a {
     border-radius: 10px;
 }
 
+#nosotros p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Para asegurar que el layout se adapta en pantallas pequeñas */
+@media (max-width: 768px) {
+    #nosotros .col-md-6 {
+        text-align: center;
+    }
+
+    #nosotros img {
+        margin-top: 20px;
+    }
+}
+
+
 /* Tabla del menú */
 #menu th, #menu td {
     padding: 1rem;
     text-align: left;
     border: 1px solid #ddd;
 }
+
+#menu h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
 
 /* Estilos del iframe de video */
 #video {

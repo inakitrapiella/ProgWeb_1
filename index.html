@@ -2,21 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Hamburguesería Blound</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <header class="container-fluid">
         <h1>Hamburguesería Blound</h1>
-        <nav class="container-fluid">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-            </ul>
+        <!-- Navbar responsive -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Blound</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu">Menú</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -42,25 +60,25 @@
         </section>
 
         <!-- Sección sobre nosotros con sistema de columnas -->
-        <section id="nosotros" class="container">
-            <h2>Sobre Nosotros</h2>
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <p>En 1988 un par de jóvenes empresarios argentinos decidieron incursionar en un mercado en Argentina: <br>
-                        el mercado de las hamburguesas. <br>
-                        En ese momento existían cadenas nacionales que ofrecían hamburguesas dentro de su menú <br>
-                        pero no se había desarrollado el hábito de consumo de hamburguesa en el público argentino <br>
-                        ni habían llegado al país las grandes cadenas internacionales. <br>
-                        Estos jóvenes empresarios no conocían el negocio pero les gustaban las hamburguesas <br>
-                        y tenían muchas ganas y convicción en sacar adelante su proyecto. <br>
-                        Es así que el 11 de Junio de 1988 nació Blound en un local alquilado del corazón de Mar del Plata. <br>
-                        Comenzaron a trabajar en su objetivo de preparar la mejor hamburguesa de Argentina. <br></p>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <img src="img/local-la-esquina-hamburgueseria.jpg" class="img-fluid" alt="Imagen de nosotros">
-                </div>
-            </div>
-        </section>
+<section id="nosotros" class="container">
+    <h2>Sobre Nosotros</h2>
+    <div class="row align-items-center">
+        <div class="col-md-6 col-sm-12">
+            <p>En 1988 un par de jóvenes empresarios argentinos decidieron incursionar en un mercado en Argentina: <br>
+                el mercado de las hamburguesas. <br>
+                En ese momento existían cadenas nacionales que ofrecían hamburguesas dentro de su menú <br>
+                pero no se había desarrollado el hábito de consumo de hamburguesas en el público argentino <br>
+                ni habían llegado al país las grandes cadenas internacionales. <br>
+                Estos jóvenes empresarios no conocían el negocio pero les gustaban las hamburguesas <br>
+                y tenían muchas ganas y convicción en sacar adelante su proyecto. <br>
+                Es así que el 11 de Junio de 1988 nació Blound en un local alquilado del corazón de Mar del Plata. <br>
+                Comenzaron a trabajar en su objetivo de preparar la mejor hamburguesa de Argentina.</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <img src="img/local-la-esquina-hamburgueseria.jpg" class="img-fluid" alt="Imagen de nosotros">
+        </div>
+    </div>
+</section>
 
         <!-- Sección del menú con tabla responsiva -->
         <section id="menu" class="container">
@@ -98,7 +116,7 @@
         <!-- Sección de video con iframe -->
         <section id="video" class="container">
             <h2>Mira nuestro video</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RKWLu6UHryQ?si=mq28iAbQmArE8_bF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RKWLu6UHryQ?si=mq28iAbQmArE8_bF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </section>
 
         <!-- Sección de contacto con formulario -->
@@ -132,6 +150,10 @@
         <p>2024 Hamburguesería Blound. Todos los derechos reservados Iñaki Trapiella.</p>
     </footer>
 
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+    </body>
+
+    </html>
+
