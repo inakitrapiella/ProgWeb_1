@@ -45,16 +45,19 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ccc;
     text-decoration: none;
     font-weight: bold;
 }
+
+
 
 /* Sección de carrusel */
 .carousel-inner img {
     width: 100%;
     height: auto;
 }
+
 
 /* Sección sobre nosotros */
 #nosotros h2{
@@ -113,9 +116,73 @@ nav ul li a {
     margin-bottom: 2rem;
 }
 
+/* Estilos para la sección de cotización */
+#cotizacion {
+    padding: 2rem;
+    background-color: #9c8888;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#cotizacion h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#cotizacionForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#cotizacionForm .form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+#cotizacionForm .form-select,
+#cotizacionForm .form-control {
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+}
+
+#cotizacionForm .form-select:focus,
+#cotizacionForm .form-control:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#cotizacionForm button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cotizacionForm button:hover {
+    background-color: #0056b3;
+}
+
+#resultadoCotizacion {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 1rem;
+}
+
 
 /* Estilos del iframe de video */
 #video {
+    
     padding: 2rem;
     text-align: center;
     background-color: #fff;
@@ -129,16 +196,21 @@ nav ul li a {
     border: none; 
 }
 
+
+
+
 /* Sección de contacto centrada */
 #contacto {
+    background-color: #8b8b8b;
     text-align: center;
     padding: 2rem;
+    border-radius: 10px;
 }
 
 #contacto form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #8b8b8b;
     padding: 1.5rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

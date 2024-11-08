@@ -1,51 +1,32 @@
-// Función para calcular el descuento
-function calcularDescuento(precio, descuento) {
-    return precio - (precio * (descuento / 100));
+// Clase para representar una Hamburguesa
+class Hamburguesa {
+    constructor(nombre, precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    // Método para calcular el precio con descuento
+    calcularDescuento(descuento) {
+        return this.precio - (this.precio * (descuento / 100));
+    }
+
+    // Método para calcular el total con la cantidad y el descuento aplicado
+    calcularTotal(cantidad, descuento) {
+        return this.calcularDescuento(descuento) * cantidad;
+    }
 }
 
 // Función para cotizar hamburguesas
-function cotizarHamburguesas(cantidad) {
-    let precioUnitario = 8500; 
-    let descuento = 15; 
-    let total = calcularDescuento(precioUnitario * cantidad, descuento);
-    alert(`El precio total por ${cantidad} hamburguesas es: $${total}`);
-}
+function cotizar() {
+    const tipoHamburguesa = document.getElementById("hamburguesaTipo");
+    const precio = parseFloat(tipoHamburguesa.value);
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+    const descuento = 15;
 
-// Simular cotización
-let cantidad = prompt("¿Cuántas hamburguesas deseas comprar?");
-if (cantidad) {
-    cotizarHamburguesas(cantidad);
-}
-
-// Validar formulario
-function validarFormulario() {
-    let inputs = document.querySelectorAll("input");
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].value === "") {
-            alert(`El campo ${inputs[i].name} está vacío`);
-            return false;
-        }
+    if (cantidad > 0) {
+        const total = (precio - (precio * (descuento / 100))) * cantidad;
+        document.getElementById("resultadoCotizacion").textContent = `El precio total es: $${total}`;
+    } else {
+        document.getElementById("resultadoCotizacion").textContent = "Por favor, ingresa una cantidad válida.";
     }
-    alert("Formulario enviado correctamente");
-    return true;
 }
-
-// Asignar la validación al formulario
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    if (validarFormulario()) {
-        this.submit();
-    }
-});
-
-// Menú de hamburguesas usando objetos y arrays
-let menu = [
-    { nombre: "Hamburguesa Clásica", precio: 8500 },
-    { nombre: "Hamburguesa Texana", precio: 9500 },
-    { nombre: "Hamburguesa Vegana", precio: 12000 }
-];
-
-// Mostrar el menú en la consola
-menu.forEach(item => {
-    console.log(`Platillo: ${item.nombre}, Precio: $${item.precio}`);
-});
