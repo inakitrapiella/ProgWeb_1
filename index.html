@@ -113,6 +113,31 @@
             </div>
         </section>
 
+
+    <main>
+        <!-- Sección de cotización de hamburguesas -->
+        <section id="cotizacion" class="container">
+            <h2>Cotiza tu Hamburguesa</h2>
+            <form id="cotizacionForm" action="#" method="get">
+                <div class="mb-3">
+                    <label for="hamburguesaTipo" class="form-label">Elige tu hamburguesa:</label>
+                    <select id="hamburguesaTipo" name="hamburguesaTipo" class="form-select" required>
+                        <option value="8500">Hamburguesa Clásica - $8500</option>
+                        <option value="9500">Hamburguesa Texana - $9500</option>
+                        <option value="12000">Hamburguesa Vegana - $12000</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" required>
+                </div>
+                <button type="button" onclick="cotizar()" class="btn btn-primary">Calcular Cotización</button>
+            </form>
+            <p id="resultadoCotizacion" class="mt-3"></p>
+        </section>
+    </main>
+
+
         <!-- Sección de video con iframe -->
         <section id="video" class="container">
             <h2>Mira nuestro video</h2>
@@ -143,6 +168,8 @@
                     <input type="submit" value="Enviar" class="btn btn-primary">
                 </div>
             </form>
+            
+            
         </section>
     </main>
 
