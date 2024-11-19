@@ -16,17 +16,22 @@ class Hamburguesa {
     }
 }
 
-// Función para cotizar hamburguesas
-function cotizar() {
-    const tipoHamburguesa = document.getElementById("hamburguesaTipo");
-    const precio = parseFloat(tipoHamburguesa.value);
-    const cantidad = parseInt(document.getElementById("cantidad").value);
-    const descuento = 15;
+// Crear un menú de hamburguesas usando la clase Hamburguesa
+const menu = [
+    new Hamburguesa("Hamburguesa Clásica", 8500),
+    new Hamburguesa("Hamburguesa Texana", 9500),
+    new Hamburguesa("Hamburguesa de Queso", 10000),
+    new Hamburguesa("Hamburguesa Vegana", 12000)
+];
 
-    if (cantidad > 0) {
-        const total = (precio - (precio * (descuento / 100))) * cantidad;
-        document.getElementById("resultadoCotizacion").textContent = `El precio total es: $${total}`;
+// Función para cotizar hamburguesas (sin interacción con el DOM)
+function cotizar(tipoIndex, cantidad) {
+    const descuento = 15; 
+    if (cantidad > 0 && tipoIndex >= 0 && tipoIndex < menu.length) {
+        const hamburguesaSeleccionada = menu[tipoIndex];
+        const total = hamburguesaSeleccionada.calcularTotal(cantidad, descuento);
+        return `El precio total es: $${total}`;
     } else {
-        document.getElementById("resultadoCotizacion").textContent = "Por favor, ingresa una cantidad válida.";
+        return "Por favor, ingresa una cantidad válida y selecciona un tipo de hamburguesa válido.";
     }
 }
