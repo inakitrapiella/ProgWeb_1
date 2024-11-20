@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamburguesería Blound</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +11,6 @@
 <body>
     <header class="container-fluid">
         <h1>Hamburguesería Blound</h1>
-        <!-- Navbar responsive -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Blound</a>
@@ -59,29 +58,29 @@
             </button>
         </section>
 
-        <!-- Sección sobre nosotros con sistema de columnas -->
-<section id="nosotros" class="container">
-    <h2>Sobre Nosotros</h2>
-    <div class="row align-items-center">
-        <div class="col-md-6 col-sm-12">
-            <p>En 1988 un par de jóvenes empresarios argentinos decidieron incursionar en un mercado en Argentina: <br>
-                el mercado de las hamburguesas. <br>
-                En ese momento existían cadenas nacionales que ofrecían hamburguesas dentro de su menú <br>
-                pero no se había desarrollado el hábito de consumo de hamburguesas en el público argentino <br>
-                ni habían llegado al país las grandes cadenas internacionales. <br>
-                Estos jóvenes empresarios no conocían el negocio pero les gustaban las hamburguesas <br>
-                y tenían muchas ganas y convicción en sacar adelante su proyecto. <br>
-                Es así que el 11 de Junio de 1988 nació Blound en un local alquilado del corazón de Mar del Plata. <br>
-                Comenzaron a trabajar en su objetivo de preparar la mejor hamburguesa de Argentina.</p>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <img src="img/local-la-esquina-hamburgueseria.jpg" class="img-fluid" alt="Imagen de nosotros">
-        </div>
-    </div>
-</section>
+        <!-- Sección sobre nosotros -->
+        <section id="nosotros" class="container my-5">
+            <h2>Sobre Nosotros</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 col-sm-12">
+                    <p>En 1988 un par de jóvenes empresarios argentinos decidieron incursionar en un mercado en Argentina: <br>
+                        el mercado de las hamburguesas. <br>
+                        En ese momento existían cadenas nacionales que ofrecían hamburguesas dentro de su menú <br>
+                        pero no se había desarrollado el hábito de consumo de hamburguesas en el público argentino <br>
+                        ni habían llegado al país las grandes cadenas internacionales. <br>
+                        Estos jóvenes empresarios no conocían el negocio pero les gustaban las hamburguesas <br>
+                        y tenían muchas ganas y convicción en sacar adelante su proyecto. <br>
+                        Es así que el 11 de Junio de 1988 nació Blound en un local alquilado del corazón de Mar del Plata. <br>
+                        Comenzaron a trabajar en su objetivo de preparar la mejor hamburguesa de Argentina.</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img src="img/local-la-esquina-hamburgueseria.jpg" class="img-fluid" alt="Imagen de nosotros">
+                </div>
+            </div>
+        </section>
 
-        <!-- Sección del menú con tabla responsiva -->
-        <section id="menu" class="container">
+        <!-- Sección del menú -->
+        <section id="menu" class="container my-5">
             <h2>Nuestro Menú</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -113,74 +112,67 @@
             </div>
         </section>
 
+        <!-- Formulario para ordenar hamburguesas -->
+        <section class="container my-5 p-4 border rounded">
+            <h3 class="mb-4">Ordena tus Hamburguesas</h3>
+            
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
 
-    <main>
-        <!-- Sección de cotización de hamburguesas -->
-        <section id="cotizacion" class="container">
-            <h2>Cotiza tu Hamburguesa</h2>
-            <form id="cotizacionForm" action="#" method="get">
-                <div class="mb-3">
-                    <label for="hamburguesaTipo" class="form-label">Elige tu hamburguesa:</label>
-                    <select id="hamburguesaTipo" name="hamburguesaTipo" class="form-select" required>
-                        <option value="8500">Hamburguesa Clásica - $8500</option>
-                        <option value="9500">Hamburguesa Texana - $9500</option>
-                        <option value="12000">Hamburguesa Vegana - $12000</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="cantidad" class="form-label">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" required>
-                </div>
-                <button type="button" onclick="cotizar()" class="btn btn-primary">Calcular Cotización</button>
-            </form>
-            <p id="resultadoCotizacion" class="mt-3"></p>
+            <div class="mb-3">
+                <label for="tipoHamburguesa" class="form-label">Tipo de Hamburguesa:</label>
+                <select id="tipoHamburguesa" class="form-select" required>
+                    <option value="8500">Hamburguesa Clásica - $8500</option>
+                    <option value="9500">Hamburguesa Texana - $9500</option>
+                    <option value="10000">Hamburguesa de Queso - $10000</option>
+                    <option value="12000">Hamburguesa Vegana - $12000</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input type="number" id="cantidad" class="form-control" min="1" value="1" required>
+            </div>
+
+            <button id="calcularBtn" class="btn btn-primary">Calcular Precio</button>
+            <button id="guardarBtn" class="btn btn-success ms-2">Guardar Orden</button>
+
+            <div id="resultadoCotizacion" class="mt-3"></div>
         </section>
-    </main>
 
-
-        <!-- Sección de video con iframe -->
-        <section id="video" class="container">
-            <h2>Mira nuestro video</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RKWLu6UHryQ?si=mq28iAbQmArE8_bF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </section>
-
-        <!-- Sección de contacto con formulario -->
-        <section id="contacto" class="container">
+        <!-- Sección de contacto -->
+        <section id="contacto" class="container my-5">
             <h2>Contacto</h2>
-            <form action="#" method="post" class="row g-3">
-                <div class="col-md-6">
-                    <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+            <form>
+                <div class="mb-3">
+                    <label for="nombreContacto" class="form-label">Nombre:</label>
+                    <input type="text" id="nombreContacto" class="form-control" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="apellido" class="form-label">Apellido:</label>
-                    <input type="text" id="apellido" name="apellido" class="form-control" required>
+                <div class="mb-3">
+                    <label for="emailContacto" class="form-label">Email:</label>
+                    <input type="email" id="emailContacto" class="form-control" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="col-12">
+                <div class="mb-3">
                     <label for="mensaje" class="form-label">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" class="form-control" required></textarea>
+                    <textarea id="mensaje" class="form-control" rows="4" required></textarea>
                 </div>
-                <div class="col-12">
-                    <input type="submit" value="Enviar" class="btn btn-primary">
-                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
-            
-            
         </section>
     </main>
 
-    <footer class="container-fluid">
+    <footer class="container-fluid bg-dark text-light text-center p-3 mt-5">
         <p>2024 Hamburguesería Blound. Todos los derechos reservados Iñaki Trapiella.</p>
     </footer>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    </body>
-
-    </html>
-
+</body>
+</html>
