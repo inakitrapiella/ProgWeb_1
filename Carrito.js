@@ -1,50 +1,48 @@
 class Carrito {
-    constructor() {
-        this.productos = [];
-    }
+  constructor() {
+    this.productos = [];
+  }
 
-    // Agregar producto al carrito
-    agregarProducto(producto) {
-        this.productos.push(producto);
-        this.actualizarStorage();
+  agregarProducto(producto) {
+    const existente = this.productos.find(p => p.nombre === producto.nombre);
+    if (existente) {
+      existente.cantidad += producto.cantidad; 
+    } else {
+      this.productos.push(producto);
     }
+  }
 
-    // Eliminar producto del carrito por su índice
-    eliminarProducto(indice) {
-        this.productos.splice(indice, 1);
-        this.actualizarStorage();
-    }
+  eliminarProducto(indice) {
+    this.productos.splice(indice, 1);
+  }
 
-    // Vaciar el carrito
-    vaciarCarrito() {
-        this.productos = [];
-        this.actualizarStorage();
-    }
+  vaciarCarrito() {
+    this.productos = [];
+  }
 
-    // Guardar en localStorage
-    actualizarStorage() {
-        localStorage.setItem("carrito", JSON.stringify(this.productos));
-    }
+  calcularTotal() {
+    return this.productos.reduce(
+      (total, producto) => total + producto.precio * producto.cantidad,
+      0
+    );
+  }
 
-    // Cargar desde localStorage
-    cargarDesdeStorage() {
-        const data = JSON.parse(localStorage.getItem("carrito"));
-        this.productos = data ? data : [];
-    }
-
-    // Mostrar carrito en el DOM
-    mostrarCarritoEnDOM(elementoDOM) {
-        elementoDOM.innerHTML = ""; 
-        this.productos.forEach((producto, index) => {
-            const item = document.createElement("div");
-            item.className = "producto-carrito";
-            item.innerHTML = `
-                <p>${producto.nombre} - $${producto.precio}</p>
-                <button data-index="${index}" class="btn-eliminar">Eliminar</button>
-            `;
-            elementoDOM.appendChild(item);
-        });
-    }
+  mostrarCarritoEnDOM(carritoDOM) {
+    carritoDOM.innerHTML = "";
+    this.productos.forEach((producto, index) => {
+      const div = document.createElement("div");
+      div.classList.add("producto-carrito");
+      div.innerHTML = `
+        <p>${producto.nombre} - $${producto.precio} x ${producto.cantidad} = $${producto.precio * producto.cantidad}</p>
+        <button class="btn btn-danger btn-eliminar" data-index="${index}">Eliminar</button>
+      `;
+      carritoDOM.appendChild(div);
+    });
+    const total = document.createElement("p");
+    total.classList.add("mt-3", "fw-bold");
+    total.textContent = `Total: $${this.calcularTotal()}`;
+    carritoDOM.appendChild(total);
+  }
 }
 
 export default Carrito;
