@@ -1,3 +1,4 @@
+
 // Clase para representar una Hamburguesa
 class Hamburguesa {
     constructor(nombre, precio) {
