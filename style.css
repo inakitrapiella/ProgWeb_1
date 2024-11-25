@@ -297,3 +297,18 @@ footer {
     background-color: #28a745;
     border-color: #28a745;
 }
+
+/* Ajuste adicional: Estilo para un nuevo botón */
+button.mejorado {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.mejorado:hover {
+    background-color: #218838;
+}

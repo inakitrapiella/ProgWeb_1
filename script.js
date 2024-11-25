@@ -1,71 +1,65 @@
-// Verifica si hay datos guardados en el local storage al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    const savedData = localStorage.getItem("simuladorData");
-    if (savedData) {
-        const data = JSON.parse(savedData);
-        mostrarDatos(data);
+import Hamburguesa from "./Hamburguesa.js";
+import Carrito from "./Carrito.js"
+
+
+
+
+document.getElementById("btn-agregar").addEventListener("click", () => {
+    const nombre = document.getElementById("nombreProducto").value;
+    const precio = parseFloat(document.getElementById("precioProducto").value);
+
+    if (nombre && !isNaN(precio)) {
+        const nuevaHamburguesa = new Hamburguesa(nombre, precio); 
+        carrito.agregarProducto({ nombre: nuevaHamburguesa.nombre, precio: nuevaHamburguesa.precio });
+        carrito.mostrarCarritoEnDOM(document.getElementById("carrito"));
+    } else {
+        mostrarNotificacion("Por favor, completa todos los campos.", "error");
     }
 });
 
-// Función para calcular el precio total
-function calcularPrecio() {
-    const tipoHamburguesa = document.getElementById("tipoHamburguesa");
-    const precioUnitario = parseInt(tipoHamburguesa.value);
-    const cantidad = parseInt(document.getElementById("cantidad").value);
-    const total = precioUnitario * cantidad;
 
-    const resultadoCotizacion = document.getElementById("resultadoCotizacion");
-    resultadoCotizacion.innerHTML = `<strong>Total a pagar: $${total}</strong>`;
+// Inicializar carrito y cargar datos del storage
+const carrito = new Carrito();
+carrito.cargarDesdeStorage();
+
+// Manejar eventos en el DOM
+document.addEventListener("DOMContentLoaded", () => {
+    const carritoDOM = document.getElementById("carrito");
+
+    // Actualizar la vista inicial del carrito
+    carrito.mostrarCarritoEnDOM(carritoDOM);
+
+    // Agregar producto al carrito
+    document.getElementById("btn-agregar").addEventListener("click", () => {
+        const nombre = document.getElementById("nombreProducto").value;
+        const precio = parseFloat(document.getElementById("precioProducto").value);
+
+        if (nombre && !isNaN(precio)) {
+            carrito.agregarProducto({ nombre, precio });
+            carrito.mostrarCarritoEnDOM(carritoDOM);
+        } else {
+            mostrarNotificacion("Por favor, completa todos los campos.", "error");
+        }
+    });
+
+    // Eliminar producto del carrito
+    carritoDOM.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-eliminar")) {
+            const index = parseInt(e.target.getAttribute("data-index"));
+            carrito.eliminarProducto(index);
+            carrito.mostrarCarritoEnDOM(carritoDOM);
+        }
+    });
+});
+
+// Mostrar notificaciones en lugar de alert()
+function mostrarNotificacion(mensaje, tipo) {
+    const notificacion = document.createElement("div");
+    notificacion.className = `notificacion ${tipo}`;
+    notificacion.innerText = mensaje;
+    document.body.appendChild(notificacion);
+
+    setTimeout(() => {
+        notificacion.remove();
+    }, 3000); 
 }
-
-// Función para capturar datos ingresados por el usuario
-function capturarDatos() {
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-
-    const usuario = {
-        nombre: nombre,
-        email: email
-    };
-
-    localStorage.setItem("simuladorData", JSON.stringify(usuario));
-    mostrarDatos(usuario);
-}
-
-// Función para mostrar datos en el DOM
-function mostrarDatos(usuario) {
-    const resultadoDiv = document.getElementById("resultado");
-    resultadoDiv.innerHTML = `
-        <h3>Bienvenido, ${usuario.nombre}!</h3>
-        <p>Email registrado: ${usuario.email}</p>
-    `;
-}
-
-// Función para guardar los datos de la orden en localStorage
-function guardarOrden() {
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-    const tipoHamburguesa = document.getElementById("tipoHamburguesa").selectedOptions[0].text;
-    const cantidad = document.getElementById("cantidad").value;
-    const precioTotal = document.getElementById("resultadoCotizacion").textContent;
-
-    if (!precioTotal) {
-        alert("Por favor, calcula el precio antes de guardar la orden.");
-        return;
-    }
-
-    const orden = {
-        nombre: nombre,
-        email: email,
-        tipoHamburguesa: tipoHamburguesa,
-        cantidad: cantidad,
-        precioTotal: precioTotal
-    };
-
-    localStorage.setItem("ordenHamburguesas", JSON.stringify(orden));
-    alert("Orden guardada exitosamente.");
-}
-
-// Asignación de eventos a los botones
-document.getElementById("calcularBtn").addEventListener("click", calcularPrecio);
-document.getElementById("guardarBtn").addEventListener("click", guardarOrden);
