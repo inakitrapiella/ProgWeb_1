@@ -1,9 +1,7 @@
-
-// Clase para representar una Hamburguesa
 class Hamburguesa {
     constructor(nombre, precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+    this.nombre = nombre;
+    this.precio = precio;
     }
 
     // Método para calcular el precio con descuento
@@ -17,5 +15,4 @@ class Hamburguesa {
     }
 }
 
-// Exportar la clase para usarla en otros archivos
 export default Hamburguesa;
