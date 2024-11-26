@@ -15,22 +15,27 @@ const cantidadInputCotizador = document.getElementById("cantidad");
 const resultadoCotizacion = document.getElementById("resultadoCotizacion");
 const guardarBtn = document.getElementById("guardarBtn");
 
+
+let hamburguesasEnMenu = menuHamburguesas;
+
 // Cargar el menú dinámicamente en los selectores
-menuHamburguesas.forEach((hamburguesa) => {
-  // Para el selector del carrito
+hamburguesasEnMenu.forEach((hamburguesa) => {
     const optionCarrito = document.createElement("option");
     optionCarrito.value = hamburguesa.precio;
     optionCarrito.textContent = `${hamburguesa.nombre} - $${hamburguesa.precio}`;
     optionCarrito.dataset.nombre = hamburguesa.nombre;
     hamburguesaSelector.appendChild(optionCarrito);
 
-  // Para el selector del cotizador
+
     const optionCotizador = document.createElement("option");
     optionCotizador.value = hamburguesa.precio;
     optionCotizador.textContent = `${hamburguesa.nombre} - $${hamburguesa.precio}`;
     optionCotizador.dataset.nombre = hamburguesa.nombre;
     tipoHamburguesaSelect.appendChild(optionCotizador);
 });
+
+
+let productosEnCarrito = [];
 
 // Manejar evento para agregar al carrito
 btnAgregar.addEventListener("click", () => {
@@ -41,6 +46,7 @@ btnAgregar.addEventListener("click", () => {
 
 if (nombre && !isNaN(precio) && cantidad > 0) {
     const nuevaHamburguesa = new Hamburguesa(nombre, precio);
+    productosEnCarrito.push({ nombre: nuevaHamburguesa.nombre, precio: nuevaHamburguesa.precio, cantidad });
     carrito.agregarProducto({ nombre: nuevaHamburguesa.nombre, precio: nuevaHamburguesa.precio, cantidad });
     carrito.mostrarCarritoEnDOM(carritoDOM);
     } else {
@@ -52,12 +58,13 @@ if (nombre && !isNaN(precio) && cantidad > 0) {
 carritoDOM.addEventListener("click", (e) => {
 if (e.target.classList.contains("btn-eliminar")) {
     const index = parseInt(e.target.getAttribute("data-index"));
+    productosEnCarrito.splice(index, 1);  // Eliminar la hamburguesa del array
     carrito.eliminarProducto(index);
     carrito.mostrarCarritoEnDOM(carritoDOM);
     }
 });
 
-// Manejar el evento del botón "Calcular Precio" en el cotizador
+// Manejar el evento del botón 
 calcularBtn.addEventListener("click", () => {
     const cantidad = parseInt(cantidadInputCotizador.value);
     const precioHamburguesa = parseFloat(tipoHamburguesaSelect.value);
@@ -98,7 +105,7 @@ if (nombreCliente && emailCliente && !isNaN(cantidad) && cantidad > 0) {
         Total: <strong>$${total}</strong>
     </div>
     `;
-    } else {
+} else {
     resultadoCotizacion.innerHTML = `
     <div class="alert alert-danger mt-3">
         Por favor, completa todos los campos correctamente.
