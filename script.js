@@ -26,7 +26,7 @@ hamburguesasEnMenu.forEach((hamburguesa) => {
     optionCarrito.dataset.nombre = hamburguesa.nombre;
     hamburguesaSelector.appendChild(optionCarrito);
 
-
+  // Para el selector del cotizador
     const optionCotizador = document.createElement("option");
     optionCotizador.value = hamburguesa.precio;
     optionCotizador.textContent = `${hamburguesa.nombre} - $${hamburguesa.precio}`;
@@ -45,8 +45,8 @@ btnAgregar.addEventListener("click", () => {
     const cantidad = parseInt(cantidadInput.value);
 
 if (nombre && !isNaN(precio) && cantidad > 0) {
-    const nuevaHamburguesa = new Hamburguesa(nombre, precio);
-    productosEnCarrito.push({ nombre: nuevaHamburguesa.nombre, precio: nuevaHamburguesa.precio, cantidad });
+    const nuevaHamburguesa = new Hamburguesa(nombre, precio); 
+    productosEnCarrito.push(nuevaHamburguesa); 
     carrito.agregarProducto({ nombre: nuevaHamburguesa.nombre, precio: nuevaHamburguesa.precio, cantidad });
     carrito.mostrarCarritoEnDOM(carritoDOM);
     } else {
@@ -58,13 +58,13 @@ if (nombre && !isNaN(precio) && cantidad > 0) {
 carritoDOM.addEventListener("click", (e) => {
 if (e.target.classList.contains("btn-eliminar")) {
     const index = parseInt(e.target.getAttribute("data-index"));
-    productosEnCarrito.splice(index, 1);  // Eliminar la hamburguesa del array
+    productosEnCarrito.splice(index, 1);  
     carrito.eliminarProducto(index);
     carrito.mostrarCarritoEnDOM(carritoDOM);
     }
 });
 
-// Manejar el evento del botón 
+// Manejar el evento del botón "Calcular Precio" en el cotizador
 calcularBtn.addEventListener("click", () => {
     const cantidad = parseInt(cantidadInputCotizador.value);
     const precioHamburguesa = parseFloat(tipoHamburguesaSelect.value);
@@ -76,7 +76,7 @@ if (!isNaN(cantidad) && cantidad > 0 && !isNaN(precioHamburguesa)) {
         El precio total para ${cantidad} hamburguesa(s) es: <strong>$${total}</strong>
     </div>
     `;
-    } else {
+} else {
     resultadoCotizacion.innerHTML = `
     <div class="alert alert-danger mt-3">
         Por favor, ingresa una cantidad válida y selecciona un tipo de hamburguesa.
@@ -105,7 +105,7 @@ if (nombreCliente && emailCliente && !isNaN(cantidad) && cantidad > 0) {
         Total: <strong>$${total}</strong>
     </div>
     `;
-} else {
+    } else {
     resultadoCotizacion.innerHTML = `
     <div class="alert alert-danger mt-3">
         Por favor, completa todos los campos correctamente.
