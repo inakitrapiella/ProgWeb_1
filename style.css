@@ -45,10 +45,12 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ccc;
     text-decoration: none;
     font-weight: bold;
 }
+
+
 
 /* Sección de carrusel */
 .carousel-inner img {
@@ -56,17 +58,26 @@ nav ul li a {
     height: auto;
 }
 
+
 /* Sección sobre nosotros */
-#nosotros {
-    padding: 2rem;
+#nosotros h2{
     text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+#nosotros {
+    padding: 2rem 0;
     background-color: #eaeaea;
 }
 
 #nosotros .row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+}
+
+#nosotros .col-md-6 {
+    padding: 1rem;
 }
 
 #nosotros img {
@@ -75,6 +86,23 @@ nav ul li a {
     border-radius: 10px;
 }
 
+#nosotros p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Para asegurar que el layout se adapta en pantallas pequeñas */
+@media (max-width: 768px) {
+    #nosotros .col-md-6 {
+        text-align: center;
+    }
+
+    #nosotros img {
+        margin-top: 20px;
+    }
+}
+
+
 /* Tabla del menú */
 #menu th, #menu td {
     padding: 1rem;
@@ -82,8 +110,79 @@ nav ul li a {
     border: 1px solid #ddd;
 }
 
+#menu h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/* Estilos para la sección de cotización */
+#cotizacion {
+    padding: 2rem;
+    background-color: #9c8888;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#cotizacion h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#cotizacionForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#cotizacionForm .form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+#cotizacionForm .form-select,
+#cotizacionForm .form-control {
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+}
+
+#cotizacionForm .form-select:focus,
+#cotizacionForm .form-control:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#cotizacionForm button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cotizacionForm button:hover {
+    background-color: #0056b3;
+}
+
+#resultadoCotizacion {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 1rem;
+}
+
+
 /* Estilos del iframe de video */
 #video {
+    
     padding: 2rem;
     text-align: center;
     background-color: #fff;
@@ -97,16 +196,21 @@ nav ul li a {
     border: none; 
 }
 
+
+
+
 /* Sección de contacto centrada */
 #contacto {
+    background-color: #8b8b8b;
     text-align: center;
     padding: 2rem;
+    border-radius: 10px;
 }
 
 #contacto form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #8b8b8b;
     padding: 1.5rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -171,4 +275,117 @@ footer {
 .img-fluid {
     max-width: 100%;
     height: auto;
+}
+
+/* Estilos para el formulario */
+
+#resultadoCotizacion {
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Ajuste adicional: Estilo para un nuevo botón */
+button.mejorado {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.mejorado:hover {
+    background-color: #218838;
+}
+
+/* seccion de recetongas */
+#recipes-section {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    text-align: center;
+}
+
+#recipes-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#recipe-search {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.recipe-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: left;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.recipe-card h3 {
+    font-size: 1.5em;
+    margin: 10px;
+    color: #555;
+}
+
+.recipe-card p {
+    font-size: 0.9em;
+    margin: 10px;
+    color: #666;
+}
+
+.recipe-card a {
+    display: block;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.recipe-card a:hover {
+    background-color: #e64a19;
 }
