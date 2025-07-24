@@ -33,8 +33,6 @@ const cargarCarritoDesdeLocalStorage = () => {
     }
 };
 
-
-
 const carritoDOM = document.getElementById("carrito");
 const hamburguesaSelector = document.getElementById("hamburguesaSelector");
 const cantidadInput = document.getElementById("cantidadProducto");
@@ -53,8 +51,6 @@ const llenarHamburguesas = (selectorId) => {
         selector.appendChild(option);
     });
 };
-
-
 
 btnAgregar.addEventListener("click", () => {
     const selectedOption = hamburguesaSelector.options[hamburguesaSelector.selectedIndex];
@@ -110,7 +106,6 @@ carrito.mostrarCarritoEnDOM = (domElement) => {
     });
 };
 
-
 // Manejar el evento de "Guardar Orden"
 guardarBtn.addEventListener("click", () => {
     const nombreCliente = document.getElementById("nombre").value.trim();
@@ -141,7 +136,6 @@ guardarBtn.addEventListener("click", () => {
         `;
     }
 });
-
 
 // Mostrar notificaciones en lugar de alert()
 function mostrarNotificacion(mensaje, tipo) {
