@@ -10,7 +10,6 @@ fetch("./hamburguesas.json")
         menuHamburguesas = data.map(h => new Hamburguesa(h.id, h.nombre, h.precio));
         
         // Llenar los selectores una vez cargado el JSON
-        llenarHamburguesas("tipoHamburguesa");
         llenarHamburguesas("hamburguesaSelector");
     })
     .catch(error => {
@@ -24,7 +23,6 @@ const carritoDOM = document.getElementById("carrito");
 const hamburguesaSelector = document.getElementById("hamburguesaSelector");
 const cantidadInput = document.getElementById("cantidadProducto");
 const btnAgregar = document.getElementById("btn-agregar");
-const calcularBtn = document.getElementById("calcularBtn");
 const resultadoCotizacion = document.getElementById("resultadoCotizacion");
 const guardarBtn = document.getElementById("guardarBtn");
 
@@ -88,27 +86,6 @@ carrito.mostrarCarritoEnDOM = (domElement) => {
         });
     });
 };
-
-// Manejar el evento del boton Calcular Precio
-calcularBtn.addEventListener("click", () => {
-    const cantidad = parseInt(document.getElementById("cantidad").value);
-    const precioHamburguesa = parseFloat(document.getElementById("tipoHamburguesa").value);
-
-    if (!isNaN(cantidad) && cantidad > 0 && !isNaN(precioHamburguesa) && precioHamburguesa > 0) {
-        const totalSinDescuento = precioHamburguesa * cantidad;
-        resultadoCotizacion.innerHTML = `
-            <div class="alert alert-success mt-3">
-                El precio total para ${cantidad} hamburguesa(s) es: <strong>$${totalSinDescuento}</strong>
-            </div>
-        `;
-    } else {
-        resultadoCotizacion.innerHTML = `
-            <div class="alert alert-danger mt-3">
-                Por favor, ingresa una cantidad válida y selecciona un tipo de hamburguesa.
-            </div>
-        `;
-    }
-});
 
 // Manejar el evento de "Guardar Orden"
 guardarBtn.addEventListener("click", () => {
