@@ -58,7 +58,7 @@ btnAgregar.addEventListener("click", () => {
     }
 });
 
-// Mostrar el carrito actualizado y agregar el botón de eliminar a cada producto
+// Mostrar el carrito actualizado y agregar el boton de eliminar a cada producto
 carrito.mostrarCarritoEnDOM = (domElement) => {
     domElement.innerHTML = "";
 
@@ -84,7 +84,7 @@ carrito.mostrarCarritoEnDOM = (domElement) => {
     });
 };
 
-// Manejar el evento del botón Calcular Precio
+// Manejar el evento del boton Calcular Precio
 calcularBtn.addEventListener("click", () => {
     const cantidad = parseInt(document.getElementById("cantidad").value);
     const precioHamburguesa = parseFloat(document.getElementById("tipoHamburguesa").value);
