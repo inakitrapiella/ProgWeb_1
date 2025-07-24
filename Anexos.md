@@ -11,4 +11,4 @@ Ambos stacks se basan en JavaScript y permiten desarrollar aplicaciones fullstac
 ---
 ## Frameworks elegidos
 - [React](./framework-react.md)
-- [Express](./framework-vue.md)
+- [Vue](./framework-vue.md)
