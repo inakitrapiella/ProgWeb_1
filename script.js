@@ -2,12 +2,20 @@ import Hamburguesa from "./Hamburguesa.js";
 import Carrito from "./Carrito.js";
 
 // Array con las hamburguesas
-const menuHamburguesas = [
-    new Hamburguesa(1, "Hamburguesa Clasica", 8500),
-    new Hamburguesa(2, "Hamburguesa Texana", 9500),
-    new Hamburguesa(3, "Hamburguesa de Queso", 10000),
-    new Hamburguesa(4, "Hamburguesa Vegana", 12000),
-];
+let menuHamburguesas = [];
+
+fetch("./hamburguesas.json")
+    .then(response => response.json())
+    .then(data => {
+        menuHamburguesas = data.map(h => new Hamburguesa(h.id, h.nombre, h.precio));
+        
+        // Llenar los selectores una vez cargado el JSON
+        llenarHamburguesas("tipoHamburguesa");
+        llenarHamburguesas("hamburguesaSelector");
+    })
+    .catch(error => {
+        console.error("Error al cargar las hamburguesas:", error);       
+    });
 
 // Inicializar carrito
 const carrito = new Carrito();
@@ -31,9 +39,6 @@ const llenarHamburguesas = (selectorId) => {
         selector.appendChild(option);
     });
 };
-
-llenarHamburguesas("tipoHamburguesa");
-llenarHamburguesas("hamburguesaSelector");
 
 let productosEnCarrito = [];
 
