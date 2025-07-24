@@ -3,7 +3,6 @@ import Carrito from "./Carrito.js";
 
 // Array con las hamburguesas
 let menuHamburguesas = [];
-let productosEnCarrito = [];
 const carrito = new Carrito();
 
 
@@ -21,16 +20,20 @@ fetch("./hamburguesas.json")
     });
 
     const guardarCarritoEnLocalStorage = () => {
-    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito.productos));
 };
 
 const cargarCarritoDesdeLocalStorage = () => {
     const carritoGuardado = localStorage.getItem("carrito");
     if (carritoGuardado) {
-        productosEnCarrito = JSON.parse(carritoGuardado);
+        const productos = JSON.parse(carritoGuardado);
+        carrito.vaciarCarrito();
+        productos.forEach(p => carrito.agregarProducto(p));
         carrito.mostrarCarritoEnDOM(carritoDOM);
     }
 };
+
+
 
 const carritoDOM = document.getElementById("carrito");
 const hamburguesaSelector = document.getElementById("hamburguesaSelector");
@@ -64,8 +67,7 @@ btnAgregar.addEventListener("click", () => {
 
         if (hamburguesaSeleccionada) {
             const totalSinDescuento = hamburguesaSeleccionada.precio * cantidad;
-
-            productosEnCarrito.push({ hamburguesa: hamburguesaSeleccionada, cantidad, total: totalSinDescuento });
+            
             carrito.agregarProducto({ nombre: hamburguesaSeleccionada.nombre, precio: hamburguesaSeleccionada.precio, cantidad, total: totalSinDescuento });
             guardarCarritoEnLocalStorage();
             carrito.mostrarCarritoEnDOM(carritoDOM);
@@ -79,57 +81,67 @@ btnAgregar.addEventListener("click", () => {
 carrito.mostrarCarritoEnDOM = (domElement) => {
     domElement.innerHTML = "";
 
-    productosEnCarrito.forEach((producto, index) => {
+    carrito.productos.forEach((producto, index) => {
         const productoElement = document.createElement("div");
         productoElement.classList.add("producto");
 
         productoElement.innerHTML = `
-            <p>${producto.hamburguesa.nombre} - Cantidad: ${producto.cantidad} - Total: $${producto.total}</p>
+            <p>${producto.nombre} - Cantidad: ${producto.cantidad} - Total: $${producto.precio * producto.cantidad}</p>
             <button class="btn btn-danger btn-eliminar" data-index="${index}">Eliminar</button>
         `;
         domElement.appendChild(productoElement);
     });
 
-    // Agregar el evento de eliminar para cada producto
+    // Mostrar total
+    const totalElement = document.createElement("p");
+    totalElement.classList.add("mt-3", "fw-bold");
+    totalElement.textContent = `Total: $${carrito.calcularTotal()}`;
+    domElement.appendChild(totalElement);
+
+    // Botones eliminar
     const eliminarButtons = domElement.querySelectorAll(".btn-eliminar");
     eliminarButtons.forEach(button => {
         button.addEventListener("click", (e) => {
             const index = parseInt(e.target.getAttribute("data-index"));
-            productosEnCarrito.splice(index, 1); 
+            carrito.eliminarProducto(index);
             guardarCarritoEnLocalStorage();
             carrito.mostrarCarritoEnDOM(domElement);
         });
     });
 };
 
+
 // Manejar el evento de "Guardar Orden"
 guardarBtn.addEventListener("click", () => {
     const nombreCliente = document.getElementById("nombre").value.trim();
     const emailCliente = document.getElementById("email").value.trim();
-    const tipoHamburguesa = document.getElementById("hamburguesaSelector").options[document.getElementById("hamburguesaSelector").selectedIndex].text;
-    const cantidad = parseInt(document.getElementById("cantidadProducto").value);
-    const precioHamburguesa = parseFloat(document.getElementById("hamburguesaSelector").value);
-    const totalSinDescuento = precioHamburguesa * cantidad;
 
-    if (nombreCliente && emailCliente && !isNaN(cantidad) && cantidad > 0) {
+    if (nombreCliente && emailCliente && carrito.productos.length > 0) {
+        let resumenProductos = "";
+        carrito.productos.forEach(p => {
+            resumenProductos += `
+                <li>${p.nombre} - Cantidad: ${p.cantidad} - Total: $${p.precio * p.cantidad}</li>
+            `;
+        });
+
         resultadoCotizacion.innerHTML = `
             <div class="alert alert-success mt-3">
                 Orden guardada correctamente: <br>
                 Cliente: <strong>${nombreCliente}</strong><br>
                 Email: <strong>${emailCliente}</strong><br>
-                Hamburguesa: <strong>${tipoHamburguesa}</strong><br>
-                Cantidad: <strong>${cantidad}</strong><br>
-                Total sin descuento: <strong>$${totalSinDescuento}</strong>
+                <ul>${resumenProductos}</ul>
+                <strong>Total general: $${carrito.calcularTotal()}</strong>
             </div>
         `;
     } else {
         resultadoCotizacion.innerHTML = `
             <div class="alert alert-danger mt-3">
-                Por favor, completa todos los campos correctamente.
+                Por favor, completa todos los campos correctamente y agrega productos al carrito.
             </div>
         `;
     }
 });
+
 
 // Mostrar notificaciones en lugar de alert()
 function mostrarNotificacion(mensaje, tipo) {
