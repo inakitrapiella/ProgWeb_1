@@ -3,6 +3,9 @@ import Carrito from "./Carrito.js";
 
 // Array con las hamburguesas
 let menuHamburguesas = [];
+let productosEnCarrito = [];
+const carrito = new Carrito();
+
 
 fetch("./hamburguesas.json")
     .then(response => response.json())
@@ -11,13 +14,23 @@ fetch("./hamburguesas.json")
         
         // Llenar los selectores una vez cargado el JSON
         llenarHamburguesas("hamburguesaSelector");
+        cargarCarritoDesdeLocalStorage();
     })
     .catch(error => {
         console.error("Error al cargar las hamburguesas:", error);       
     });
 
-// Inicializar carrito
-const carrito = new Carrito();
+    const guardarCarritoEnLocalStorage = () => {
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito));
+};
+
+const cargarCarritoDesdeLocalStorage = () => {
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+        productosEnCarrito = JSON.parse(carritoGuardado);
+        carrito.mostrarCarritoEnDOM(carritoDOM);
+    }
+};
 
 const carritoDOM = document.getElementById("carrito");
 const hamburguesaSelector = document.getElementById("hamburguesaSelector");
@@ -38,7 +51,7 @@ const llenarHamburguesas = (selectorId) => {
     });
 };
 
-let productosEnCarrito = [];
+
 
 btnAgregar.addEventListener("click", () => {
     const selectedOption = hamburguesaSelector.options[hamburguesaSelector.selectedIndex];
@@ -54,6 +67,7 @@ btnAgregar.addEventListener("click", () => {
 
             productosEnCarrito.push({ hamburguesa: hamburguesaSeleccionada, cantidad, total: totalSinDescuento });
             carrito.agregarProducto({ nombre: hamburguesaSeleccionada.nombre, precio: hamburguesaSeleccionada.precio, cantidad, total: totalSinDescuento });
+            guardarCarritoEnLocalStorage();
             carrito.mostrarCarritoEnDOM(carritoDOM);
         }
     } else {
@@ -82,6 +96,7 @@ carrito.mostrarCarritoEnDOM = (domElement) => {
         button.addEventListener("click", (e) => {
             const index = parseInt(e.target.getAttribute("data-index"));
             productosEnCarrito.splice(index, 1); 
+            guardarCarritoEnLocalStorage();
             carrito.mostrarCarritoEnDOM(domElement);
         });
     });
