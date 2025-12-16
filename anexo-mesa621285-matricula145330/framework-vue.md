@@ -37,6 +37,8 @@ Vue puede integrarse directamente con un CDN (`<script src="...vue.js">`) o medi
 ##  Ejemplo de código - "Antes y después"
 
 ### Antes (JavaScript puro)
+[Ver script.js – línea 37](https://github.com/inakitrapiella/ProgWeb_1/blob/dff8913d160465ae920d408eb9113d165035bba5/script.js#L37C1-L37C76)
+
 
 ```js
 const hamburguesaSelector = document.getElementById("hamburguesaSelector");
