@@ -14,7 +14,7 @@ Pull Request: [A01](https://github.com/inakitrapiella/ProgWeb_1/pull/1)
 
 ---
 
-## Actividad Obligatoria N°2 – 16-09-2024  
+## Actividad Obligatoria N°2 – 16-09-2024
 Pull Request: [A02](https://github.com/inakitrapiella/ProgWeb_1/pull/2)
 
 ### Agregado
