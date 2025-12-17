@@ -69,3 +69,16 @@ Pull Request: [Parcial2](https://github.com/inakitrapiella/ProgWeb_1/pull/7)
 - Integracion de una API externa: TheMealDB.
 - Uso de JSON.
 - Obtencion de datos mediante `fetch()`.
+
+---
+
+## Examen Final – 16-12-2025  
+Pull Request: [Final](https://github.com/inakitrapiella/ProgWeb_1/pull/10)
+
+### Agregado
+- Actualización de los archivos anexos:
+- anexos.md
+ - framework-react.md
+ - framework-vue.md
+ - Actualización de la documentación de este archivo de progreso.
+- Uso del canal de Slack para la comunicación y seguimiento de la entrega.
