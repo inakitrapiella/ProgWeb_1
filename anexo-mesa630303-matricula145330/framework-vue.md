@@ -28,7 +28,7 @@ Vue es especialmente atractivo por su **baja curva de aprendizaje**, ideal para 
 |----------------------|-------------|
 | Curva de aprendizaje | Baja        |
 | Configuración inicial| Baja a media|
-| Documentación        | Excelente   |
+| Documentación        | Media a Alta|
 
 Vue puede integrarse directamente con un CDN (`<script src="...vue.js">`) o mediante un entorno más robusto como **Vite** o **Vue CLI**. Se adapta fácilmente a proyectos en evolución sin grandes reestructuraciones.
 
