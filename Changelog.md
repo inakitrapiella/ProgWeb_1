@@ -72,8 +72,8 @@ Pull Request: [Parcial2](https://github.com/inakitrapiella/ProgWeb_1/pull/7)
 
 ---
 
-## Examen Final – 16-12-2025  
-Pull Request: [Final](https://github.com/inakitrapiella/ProgWeb_1/pull/10)
+## Examen Final – 20-02-2026  
+Pull Request: [Final](https://github.com/inakitrapiella/ProgWeb_1/pull/11)
 
 ### Agregado
 - Actualización de los archivos anexos:
