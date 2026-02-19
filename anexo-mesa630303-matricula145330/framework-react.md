@@ -30,7 +30,7 @@ No se considera alta porque:
 - Existe abundante documentación oficial y comunidad activa.
 - Puede aprenderse progresivamente comenzando por componentes simples.
 
-Por estos motivos, se clasifica como dificultad *media* y no baja (por el cambio conceptual) ni alta (por su buena documentacion y adopción masiva).
+Por estos, se clasifica como dificultad *media* y no baja (por el cambio conceptual) ni alta (por su buena documentacion y adopción masiva).
 
 ---
 
