@@ -18,7 +18,7 @@ ofrecer una experiencia gastronomica unica. Ademas, las hamburguesas tienen un a
 # Stack 
 
 - HTML
-- Css
+- CSS
 - js
 
 # Anexos
