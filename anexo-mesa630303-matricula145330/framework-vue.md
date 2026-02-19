@@ -22,19 +22,27 @@ Vue es especialmente atractivo por su **baja curva de aprendizaje**, ideal para 
 
 ---
 
-##  Nivel de dificultad de adaptación
+## Nivel de dificultad de adaptacion
 
-| Aspecto              | Nivel       |
-|----------------------|-------------|
-| Curva de aprendizaje | Baja        |
-| Configuración inicial| Baja a media|
-| Documentación        | Media a Alta|
+La clasificacion se fundamenta en criterios tecnicos medibles:
 
-Vue puede integrarse directamente con un CDN (`<script src="...vue.js">`) o mediante un entorno más robusto como **Vite** o **Vue CLI**. Se adapta fácilmente a proyectos en evolución sin grandes reestructuraciones.
+| Aspecto | Nivel | Justificacion |
+|----------|--------|---------------|
+| Curva de aprendizaje | Baja | Sintaxis cercana a HTML y JavaScript tradicional |
+| Configuracion inicial | Baja a Media | Puede usarse por CDN sin entorno complejo o mediante Vite |
+| Documentacion | Alta | Documentacion oficial clara, estructurada y con ejemplos prácticos |
+
+Vue se considera de dificultad baja a media porque:
+
+- Permite integracion progresiva sin reescribir todo el proyecto.
+- Mantiene separación clara entre template, logica y estilos.
+- El sistema reactivo esta integrado sin necesidad de librerias externas.
+
+No se clasifica como alta porque no requiere TypeScript obligatorio ni una arquitectura rigida inicial.
 
 ---
 
-##  Ejemplo de código - "Antes y después"
+##  Ejemplo de codigo - "Antes y después"
 
 ### Antes (JavaScript puro)
 [Ver script.js – línea 37](https://github.com/inakitrapiella/ProgWeb_1/blob/dff8913d160465ae920d408eb9113d165035bba5/script.js#L37C1-L37C76)

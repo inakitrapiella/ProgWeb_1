@@ -16,11 +16,21 @@ React permite dividir la aplicación en componentes reutilizables. En este proye
 
 ---
 
-##  Nivel de dificultad de adaptación
+## Nivel de dificultad de adaptacion
 
-- Curva de aprendizaje media.
-- Requiere configurar un entorno (como Vite o CRA).
-- JSX puede requerir adaptación si se viene de JS puro.
+Se considera una *curva de aprendizaje media* en base a los siguientes criterios objetivos:
+
+- Requiere comprender el concepto de componentes reutilizables.
+- Introduce JSX, que combina HTML y JavaScript en el mismo archivo.
+- Es necesario configurar un entorno moderno (Node.js, Vite o Create React App).
+- Manejo del estado (useState, props) implica cambiar la logica imperativa por logica declarativa.
+
+No se considera alta porque:
+- La sintaxis es cercana a JavaScript moderno.
+- Existe abundante documentación oficial y comunidad activa.
+- Puede aprenderse progresivamente comenzando por componentes simples.
+
+Por estos motivos, se clasifica como dificultad *media* y no baja (por el cambio conceptual) ni alta (por su buena documentacion y adopción masiva).
 
 ---
 
